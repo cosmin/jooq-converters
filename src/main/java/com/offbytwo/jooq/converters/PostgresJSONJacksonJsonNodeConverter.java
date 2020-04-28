@@ -8,7 +8,7 @@ import org.jooq.JSON;
 
 import java.io.IOException;
 
-public class PostgresJSONJacksonJsonNodeConverter implements Converter<JSONB, JsonNode> {
+public class PostgresJSONJacksonJsonNodeConverter implements Converter<JSON, JsonNode> {
     @Override
     public JsonNode from(JSON t) {
         try {
