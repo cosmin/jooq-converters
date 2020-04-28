@@ -9,10 +9,10 @@ import java.sql.Types;
 
 import static org.jooq.tools.Convert.convert;
 
-public class PostgresJSONJacksonJsonNodeBinding implements Binding<JSONB, JsonNode> {
+public class PostgresJSONJacksonJsonNodeBinding implements Binding<JSON, JsonNode> {
 
     @Override
-    public Converter<JSONB, JsonNode> converter() {
+    public Converter<JSON, JsonNode> converter() {
         return new PostgresJSONJacksonJsonNodeConverter();
     }
 
