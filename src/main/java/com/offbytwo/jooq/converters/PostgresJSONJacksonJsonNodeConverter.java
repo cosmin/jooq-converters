@@ -4,13 +4,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.NullNode;
 import org.jooq.Converter;
-import org.jooq.JSONB;
+import org.jooq.JSON;
 
 import java.io.IOException;
 
 public class PostgresJSONJacksonJsonNodeConverter implements Converter<JSONB, JsonNode> {
     @Override
-    public JsonNode from(JSONB t) {
+    public JsonNode from(JSON t) {
         try {
             return t == null
                     ? NullNode.instance
@@ -21,7 +21,7 @@ public class PostgresJSONJacksonJsonNodeConverter implements Converter<JSONB, Js
     }
 
     @Override
-    public JSONB to(JsonNode u) {
+    public JSON to(JsonNode u) {
         try {
             return u == null || u.equals(NullNode.instance)
                     ? null
@@ -32,8 +32,8 @@ public class PostgresJSONJacksonJsonNodeConverter implements Converter<JSONB, Js
     }
 
     @Override
-    public Class<JSONB> fromType() {
-        return JSONB.class;
+    public Class<JSON> fromType() {
+        return JSON.class;
     }
 
     @Override
