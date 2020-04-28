@@ -37,12 +37,12 @@ public class PostgresJSONJacksonJsonNodeBinding implements Binding<JSON, JsonNod
 
     @Override
     public void get(BindingGetResultSetContext<JsonNode> ctx) throws SQLException {
-        ctx.convert(converter()).value(JSONB.valueOf(ctx.resultSet().getString(ctx.index())));
+        ctx.convert(converter()).value(JSON.valueOf(ctx.resultSet().getString(ctx.index())));
     }
 
     @Override
     public void get(BindingGetStatementContext<JsonNode> ctx) throws SQLException {
-        ctx.convert(converter()).value(JSONB.valueOf(ctx.statement().getString(ctx.index())));
+        ctx.convert(converter()).value(JSON.valueOf(ctx.statement().getString(ctx.index())));
     }
 
     // The below methods aren't needed in PostgreSQL:
