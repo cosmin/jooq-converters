@@ -1,16 +1,17 @@
-package com.offbytwo.jooq.converters;
+package io.codecmarket.common.jooq;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.NullNode;
 import org.jooq.Converter;
+import org.jooq.JSONB;
 
 import java.io.IOException;
 
-public class PostgresJSONJacksonJsonNodeConverter implements Converter<Object, JsonNode> {
+public class PostgresJSONJacksonJsonNodeConverter implements Converter<JSONB, JsonNode> {
     @Override
-    public JsonNode from(Object t) {
+    public JsonNode from(JSONB t) {
         try {
             return t == null
                     ? NullNode.instance
@@ -21,19 +22,19 @@ public class PostgresJSONJacksonJsonNodeConverter implements Converter<Object, J
     }
 
     @Override
-    public Object to(JsonNode u) {
+    public JSONB to(JsonNode u) {
         try {
             return u == null || u.equals(NullNode.instance)
                     ? null
-                    : new ObjectMapper().writeValueAsString(u);
+                    : JSONB.valueOf(new ObjectMapper().writeValueAsString(u));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Class<Object> fromType() {
-        return Object.class;
+    public Class<JSONB> fromType() {
+        return JSONB.class;
     }
 
     @Override
