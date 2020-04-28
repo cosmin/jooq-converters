@@ -1,5 +1,4 @@
-package io.codecmarket.common.jooq;
-
+package com.offbytwo.jooq.converters;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.jooq.*;
 import org.jooq.impl.DSL;
