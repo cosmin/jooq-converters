@@ -25,7 +25,7 @@ public class PostgresJSONJacksonJsonNodeConverter implements Converter<JSON, Jso
         try {
             return u == null || u.equals(NullNode.instance)
                     ? null
-                    : JSONB.valueOf(new ObjectMapper().writeValueAsString(u));
+                    : JSON.valueOf(new ObjectMapper().writeValueAsString(u));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
